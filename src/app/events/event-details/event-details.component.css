@@ -7,3 +7,6 @@
   height: 100px;
 }
 
+a {
+  cursor: pointer;
+}
