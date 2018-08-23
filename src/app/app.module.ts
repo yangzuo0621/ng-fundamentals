@@ -12,7 +12,9 @@ import {
   EventListResolver,
   CreateSessionComponent,
   SessionListComponent,
-  DurationPipe
+  DurationPipe,
+  UpvoteComponent,
+  LocationValidator
 } from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
@@ -29,6 +31,7 @@ import { appRoutes } from './routes';
 import { NotFoundComponent } from './errors/not-found.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { VoterService } from './events/event-details/voter.service';
 
 const toastr: Toastr = window['toastr'];
 const jQuery = window['$'];
@@ -53,7 +56,9 @@ const jQuery = window['$'];
     CollapsibleWellComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModelTriggerDirective
+    ModelTriggerDirective,
+    UpvoteComponent,
+    LocationValidator
   ],
   providers: [
     EventService,
@@ -62,7 +67,8 @@ const jQuery = window['$'];
     EventRouteActivator,
     EventListResolver,
     AuthService,
-    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
+    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
+    VoterService
   ],
   bootstrap: [EventsAppComponent]
 })
