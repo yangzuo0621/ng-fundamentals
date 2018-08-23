@@ -4,3 +4,4 @@ export * from './session-list.component';
 export * from './upvote.component';
 export * from './voter.service';
 export * from './upvote.component';
+export * from './event-resolver';

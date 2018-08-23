@@ -1,6 +1,8 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import {
   EventsListComponent,
@@ -14,7 +16,8 @@ import {
   SessionListComponent,
   DurationPipe,
   UpvoteComponent,
-  LocationValidator
+  LocationValidator,
+  EventResolver
 } from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
@@ -30,7 +33,6 @@ import {
 import { appRoutes } from './routes';
 import { NotFoundComponent } from './errors/not-found.component';
 import { AuthService } from './user/auth.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VoterService } from './events/event-details/voter.service';
 
 const toastr: Toastr = window['toastr'];
@@ -41,7 +43,8 @@ const jQuery = window['$'];
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [
     EventsAppComponent,
@@ -68,7 +71,8 @@ const jQuery = window['$'];
     EventListResolver,
     AuthService,
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
-    VoterService
+    VoterService,
+    EventResolver
   ],
   bootstrap: [EventsAppComponent]
 })
